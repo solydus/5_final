@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% load thumbnail %}
+{% block title %} 
+  <title>{{ title }}</title> 
+{% endblock %} 
+{% block content %} 
+<main> 
+    <br><br>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        {{form}}
+            <center> <button class="btn btn-success" type='submit'><h1>ДОБАВИТЬ ЗАПИСЬ </H2></button></center>
+    </form>
+    <center><h3><p><a href="/">Вернуться на главную</a></p></h3></center>
+</main> 
+
+{% endblock %}

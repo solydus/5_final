@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-center">
+    <div class="col-md-auto">
+      <h1>Ошибка 404</h1>
+      <p class="lead">Страница <code>{{ path }}</code> не найдена WTF?</p>
+      <a class="btn btn-lg btn-outline-primary text-dark" href="{% url 'posts:home' %}">Вернуться на главную</a>
+    </div>
+  </div>
+  
+{% endblock %}

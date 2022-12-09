@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% block title %} 
+  <title>{{ title }}</title> 
+{% endblock %} 
+{% block content %} 
+<main> 
+    <br><br>
+    <form method="post">
+        {% csrf_token %}
+        <center>{{form}}</center><p>
+            <center> <button class="btn btn-success" type='submit'><h1>УДАЛИТЬ ЗАПИСЬ </H2></button></center>
+    </form>
+    <center><h3><p><a href="/">Вернуться на главную</a></p></h3></center>
+</main> 
+
+{% endblock %}

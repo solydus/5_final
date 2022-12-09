@@ -1,0 +1,35 @@
+<ul>
+  <li>
+   <h1> Автор: {{ post.author.get_full_name }} </h1>
+  </li>
+  <li>
+    Дата публикации: {{ post.pub_date|date:'d E Y' }}
+  </li>
+</ul>
+<p>{{ group.description }}</p>
+<p>{{ post.text }}</p>
+<p>{{ post.group_id }}</p>
+{% load thumbnail %}
+{% if post.group %}
+
+<a href="{% url 'posts:posts_detail' post.pk %}"> <b>Подробней</b> </a> 
+&ensp; &ensp;
+{% if user.is_authenticated %}
+<a href="{% url 'posts:post_edit' post.pk %}"> <b>Редактировать</b> </a>
+&ensp; &ensp;
+<a href="{% url 'posts:posts_delete' post.pk %}"> <b>Удалить </b></a>
+&ensp; &ensp;
+<!--<br><br>
+<a href="{% url 'posts:add_comment' post.pk %}"> Комментировать </a> -->
+{% endif %}
+<a href="{% url 'posts:profile' post.author.username%}"><b>Все записи {{post.author.username}}</b></a>
+&ensp; &ensp;
+<a href="{% url 'posts:group_list' post.group.slug %}"><b>Все записи группы {{post.group_id}}</b></a>
+
+{% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+<img class="card-img my-2" src="{{ im.url }}">
+<br><br>
+{% endif %}
+{% if not forloop.last %}
+  <hr>
+{% endif %}
